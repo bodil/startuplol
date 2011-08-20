@@ -17,7 +17,7 @@ module.exports =
     # Try it with two simultaneous sessions and make sure they don't affect each other
     session2 = assert.answer "my name is bob. what is my name?", "bob"
     assert.answer "what is my name?", "bob", session2
-    assert.answer "what is my name?", "bob", session1
+    assert.answer "what is my name?", "alice", session1
 
   "shopping cart": ->
     session = assert.answer "what products do you have for sale (comma separated)", "product1, product2, product3"
