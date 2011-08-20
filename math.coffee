@@ -25,20 +25,20 @@ exports.fibFast = (n) ->
 	    c = a + b
 	  	return b
 
-# Nth root solver - no built-in cube root in JS ;(
+# JS has no cube root function, but we can still check if a number is a cube.
+# Math.pow n, 1/3 would give us the cube root, but stupid IEEE-754 gives a rounding error.
+# It's going to be close to the correct answer, so we round it to the nearest integer
+# and check if the cube of the rounded result equals the number we're checking.
+# If they match, the number is a cube.
+is_cube = (n) ->
+  a = Math.round Math.pow n, 1/3
+  n == a * a * a
 
-nth_root = (num, nArg, precArg) ->
-  n = nArg || 2
-  prec = precArg || 12
-  x = 1
-  for i in [0..prec-1]
-    x = 1/n * ((n-1)*x + (num / Math.pow(x, n-1)))
-  x
+# On the other hand, JS has a square root function, so let's do this one the easy way.
+is_integer = (n) -> n == Math.floor n
+is_square = (n) -> is_integer Math.sqrt n
 
-cube_root = (n) -> nth_root n, 3
-
-exports.square_and_cube = (n) ->
-  (Math.floor(Math.sqrt n) * Math.floor(Math.sqrt n) == n) && (Math.floor(cube_root n) * Math.floor(cube_root n))
+exports.square_and_cube = (n) -> (is_square n) and (is_cube n)
 
 # Dumb prime checker
 

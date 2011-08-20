@@ -24,7 +24,7 @@ cons = exports.cons = (item, list) -> [item].concat list
 ints = (m) -> ((parseInt x, 10) for x in m.slice 1)
 
 # Takes a match result, assumes the first group is a comma separated list of ints, parses and returns a list
-exports.intlist = (m) -> ints cons null, (x.trim() for x in m[1].split ",")
+intlist = (m) -> ints cons null, (x.trim() for x in m[1].split ",")
 
 # Wraps a function to take ints as arguments
 exports.ints = (func) -> (m) -> func.apply this, ints m

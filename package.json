@@ -1,0 +1,12 @@
+{
+    "name": "startuplol",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "coffee-script": "",
+        "mongoose": "",
+        "express": "",
+        "connect-mongoose": "",
+        "should": ""
+    }
+}
